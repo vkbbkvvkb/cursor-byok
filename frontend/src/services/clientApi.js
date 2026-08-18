@@ -8,10 +8,6 @@ import {
   StartProxy,
   StopProxy,
 } from "@bindings/cursor/internal/bridge/proxyservice.js";
-import {
-  GetAdRuntime,
-  OpenExternalURL as OpenAdExternalURL,
-} from "@bindings/cursor/internal/bridge/adservice.js";
 import { GetHomeMetricsSummary } from "@bindings/cursor/internal/bridge/metricsservice.js";
 import {
   CheckForUpdates,
@@ -81,14 +77,6 @@ export function getProxyState() {
 
 export function getHomeMetricsSummary() {
   return withApiLogging("GetHomeMetricsSummary", undefined, () => GetHomeMetricsSummary());
-}
-
-export function getAdRuntime() {
-  return GetAdRuntime();
-}
-
-export function openAdExternalURL(url) {
-  return OpenAdExternalURL(url);
 }
 
 export function startProxyService() {
