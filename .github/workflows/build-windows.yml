@@ -25,7 +25,7 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y protobuf-compiler libgtk-3-dev libwebkit2gtk-4.1-dev
+          sudo apt-get install -y protobuf-compiler libgtk-4-dev libwebkitgtk-6.0-dev
           go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
           go install connectrpc.com/connect/cmd/protoc-gen-connect-go@latest
 
