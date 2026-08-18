@@ -22,9 +22,10 @@ jobs:
       - name: Install Yarn
         run: npm install -g yarn
 
-      - name: Install protoc
+      - name: Install system dependencies
         run: |
-          sudo apt-get update && sudo apt-get install -y protobuf-compiler
+          sudo apt-get update
+          sudo apt-get install -y protobuf-compiler libgtk-3-dev libwebkit2gtk-4.1-dev
           go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
           go install connectrpc.com/connect/cmd/protoc-gen-connect-go@latest
 
