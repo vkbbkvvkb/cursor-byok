@@ -222,11 +222,11 @@ function openStatsDetail() {
         >
           <button
             type="button"
-            class="center-row justify-center h-[24px] rounded-[6px] border border-[#3b3b3b] bg-[#242424] px-2 text-[#9d9d9d] transition-colors duration-150 hover:border-[#4c4c4c] hover:text-white"
+            class="center-row justify-center h-[24px] w-[24px] rounded-[6px] border border-[#3b3b3b] bg-[#242424] text-[#9d9d9d] transition-colors duration-150 hover:border-[#4c4c4c] hover:text-white"
             title="查看更多统计"
             @click="openStatsDetail"
           >
-            <span>更多</span>
+            <span class="icon-[mdi--chart-box] text-[14px]"></span>
           </button>
           <button
             type="button"

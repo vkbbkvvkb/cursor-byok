@@ -36,7 +36,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 1017,
+          "line": 1018,
           "column": 14
         }
       ]
@@ -60,7 +60,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 285,
+          "line": 303,
           "column": 64
         }
       ]
@@ -72,7 +72,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 446,
+          "line": 447,
           "column": 14
         }
       ]
@@ -137,7 +137,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 482,
+          "line": 483,
           "column": 14
         }
       ]
@@ -257,7 +257,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 302,
+          "line": 303,
           "column": 14
         }
       ]
@@ -269,7 +269,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 994,
+          "line": 995,
           "column": 47
         }
       ]
@@ -329,7 +329,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 217,
+          "line": 214,
           "column": 15
         }
       ]
@@ -358,12 +358,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 282,
+          "line": 300,
           "column": 64
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 320,
+          "line": 338,
           "column": 64
         }
       ]
@@ -385,7 +385,7 @@
         },
         {
           "file": "src/state/appState.js",
-          "line": 328,
+          "line": 329,
           "column": 36
         }
       ]
@@ -409,12 +409,12 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 614,
+          "line": 615,
           "column": 32
         },
         {
           "file": "src/state/appState.js",
-          "line": 1141,
+          "line": 1142,
           "column": 21
         }
       ]
@@ -460,7 +460,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 985,
+          "line": 986,
           "column": 12
         }
       ]
@@ -472,7 +472,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 485,
+          "line": 486,
           "column": 14
         }
       ]
@@ -541,7 +541,7 @@
         },
         {
           "file": "src/state/appState.js",
-          "line": 1059,
+          "line": 1060,
           "column": 12
         }
       ]
@@ -565,7 +565,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 207,
+          "line": 204,
           "column": 15
         }
       ]
@@ -577,17 +577,17 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 261,
+          "line": 279,
           "column": 49
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 287,
+          "line": 305,
           "column": 64
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 323,
+          "line": 341,
           "column": 64
         }
       ]
@@ -623,17 +623,17 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 466,
+          "line": 467,
           "column": 16
         },
         {
           "file": "src/state/appState.js",
-          "line": 472,
+          "line": 473,
           "column": 16
         },
         {
           "file": "src/state/appState.js",
-          "line": 478,
+          "line": 479,
           "column": 16
         }
       ]
@@ -705,20 +705,8 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 1051,
+          "line": 1052,
           "column": 14
-        }
-      ]
-    },
-    "38844b135cf70dfc": {
-      "source": "更多",
-      "kind": "text",
-      "placeholders": 0,
-      "refs": [
-        {
-          "file": "src/components/HomeMetricsCard.vue",
-          "line": 229,
-          "column": 19
         }
       ]
     },
@@ -804,6 +792,11 @@
           "file": "src/components/HomeMetricsCard.vue",
           "line": 235,
           "column": 21
+        },
+        {
+          "file": "src/views/Stats.vue",
+          "line": 232,
+          "column": 21
         }
       ]
     },
@@ -814,7 +807,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 431,
+          "line": 432,
           "column": 14
         }
       ]
@@ -860,7 +853,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 1015,
+          "line": 1016,
           "column": 5
         }
       ]
@@ -932,12 +925,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 192,
+          "line": 189,
           "column": 52
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 193,
+          "line": 190,
           "column": 74
         }
       ]
@@ -985,7 +978,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 443,
+          "line": 444,
           "column": 14
         }
       ]
@@ -1009,7 +1002,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 271,
+          "line": 289,
           "column": 77
         }
       ]
@@ -1069,7 +1062,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 120,
+          "line": 121,
           "column": 12
         }
       ]
@@ -1168,8 +1161,8 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 176,
-          "column": 21
+          "line": 223,
+          "column": 13
         }
       ]
     },
@@ -1192,7 +1185,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 305,
+          "line": 306,
           "column": 12
         }
       ]
@@ -1303,12 +1296,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 273,
+          "line": 291,
           "column": 158
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 311,
+          "line": 329,
           "column": 160
         }
       ]
@@ -1342,7 +1335,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 429,
+          "line": 430,
           "column": 20
         }
       ]
@@ -1366,7 +1359,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 321,
+          "line": 322,
           "column": 14
         }
       ]
@@ -1390,7 +1383,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 983,
+          "line": 984,
           "column": 14
         }
       ]
@@ -1402,7 +1395,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 437,
+          "line": 438,
           "column": 14
         }
       ]
@@ -1596,7 +1589,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 280,
+          "line": 298,
           "column": 53
         }
       ]
@@ -1620,7 +1613,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 1251,
+          "line": 1252,
           "column": 14
         }
       ]
@@ -1673,12 +1666,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 271,
+          "line": 289,
           "column": 50
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 309,
+          "line": 327,
           "column": 50
         }
       ]
@@ -1731,7 +1724,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 309,
+          "line": 327,
           "column": 79
         }
       ]
@@ -1753,7 +1746,7 @@
         },
         {
           "file": "src/state/appState.js",
-          "line": 206,
+          "line": 207,
           "column": 12
         },
         {
@@ -1823,7 +1816,7 @@
         },
         {
           "file": "src/state/appState.js",
-          "line": 1036,
+          "line": 1037,
           "column": 16
         }
       ]
@@ -1919,17 +1912,17 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 247,
+          "line": 265,
           "column": 49
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 286,
+          "line": 304,
           "column": 64
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 322,
+          "line": 340,
           "column": 64
         }
       ]
@@ -1958,7 +1951,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 980,
+          "line": 981,
           "column": 14
         }
       ]
@@ -1982,12 +1975,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 196,
+          "line": 193,
           "column": 52
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 197,
+          "line": 194,
           "column": 72
         }
       ]
@@ -2134,7 +2127,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 461,
+          "line": 462,
           "column": 14
         }
       ]
@@ -2235,12 +2228,12 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 1423,
+          "line": 1430,
           "column": 32
         },
         {
           "file": "src/state/appState.js",
-          "line": 1444,
+          "line": 1451,
           "column": 32
         }
       ]
@@ -2300,7 +2293,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 1057,
+          "line": 1058,
           "column": 14
         }
       ]
@@ -2324,7 +2317,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 489,
+          "line": 490,
           "column": 14
         }
       ]
@@ -2365,7 +2358,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 455,
+          "line": 456,
           "column": 14
         }
       ]
@@ -2377,12 +2370,12 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 1003,
+          "line": 1004,
           "column": 12
         },
         {
           "file": "src/state/appState.js",
-          "line": 1046,
+          "line": 1047,
           "column": 87
         }
       ]
@@ -2411,7 +2404,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 1301,
+          "line": 1302,
           "column": 14
         },
         {
@@ -2503,7 +2496,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 212,
+          "line": 209,
           "column": 50
         }
       ]
@@ -2559,17 +2552,17 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 241,
+          "line": 259,
           "column": 49
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 281,
+          "line": 299,
           "column": 64
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 319,
+          "line": 337,
           "column": 64
         }
       ]
@@ -2581,7 +2574,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 1032,
+          "line": 1033,
           "column": 16
         }
       ]
@@ -2605,7 +2598,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 230,
+          "line": 248,
           "column": 127
         }
       ]
@@ -2617,7 +2610,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 284,
+          "line": 302,
           "column": 64
         }
       ]
@@ -2658,18 +2651,6 @@
         }
       ]
     },
-    "aee88743413144a2": {
-      "source": "刷新",
-      "kind": "text",
-      "placeholders": 0,
-      "refs": [
-        {
-          "file": "src/views/Stats.vue",
-          "line": 225,
-          "column": 88
-        }
-      ]
-    },
     "b057ce7198ed5871": {
       "source": "按模型统计",
       "kind": "text",
@@ -2677,7 +2658,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 308,
+          "line": 326,
           "column": 56
         }
       ]
@@ -2862,6 +2843,11 @@
           "file": "src/components/HomeMetricsCard.vue",
           "line": 235,
           "column": 21
+        },
+        {
+          "file": "src/views/Stats.vue",
+          "line": 232,
+          "column": 21
         }
       ]
     },
@@ -2884,7 +2870,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 449,
+          "line": 450,
           "column": 14
         }
       ]
@@ -3033,27 +3019,27 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 1272,
+          "line": 1273,
           "column": 28
         },
         {
           "file": "src/state/appState.js",
-          "line": 1274,
+          "line": 1275,
           "column": 38
         },
         {
           "file": "src/state/appState.js",
-          "line": 1309,
+          "line": 1310,
           "column": 93
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 202,
+          "line": 199,
           "column": 50
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 318,
+          "line": 336,
           "column": 53
         }
       ]
@@ -3077,7 +3063,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 992,
+          "line": 993,
           "column": 51
         }
       ]
@@ -3101,7 +3087,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 222,
+          "line": 241,
           "column": 61
         }
       ]
@@ -3125,7 +3111,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 297,
+          "line": 298,
           "column": 12
         }
       ]
@@ -3173,7 +3159,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 440,
+          "line": 441,
           "column": 14
         }
       ]
@@ -3197,7 +3183,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 1220,
+          "line": 1221,
           "column": 14
         },
         {
@@ -3226,12 +3212,12 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 209,
+          "line": 210,
           "column": 38
         },
         {
           "file": "src/state/appState.js",
-          "line": 239,
+          "line": 240,
           "column": 50
         }
       ]
@@ -3248,7 +3234,7 @@
         },
         {
           "file": "src/state/appState.js",
-          "line": 311,
+          "line": 312,
           "column": 49
         }
       ]
@@ -3289,7 +3275,7 @@
         },
         {
           "file": "src/state/appState.js",
-          "line": 332,
+          "line": 333,
           "column": 36
         }
       ]
@@ -3347,7 +3333,7 @@
         },
         {
           "file": "src/state/appState.js",
-          "line": 261,
+          "line": 262,
           "column": 18
         }
       ]
@@ -3359,7 +3345,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 434,
+          "line": 435,
           "column": 14
         }
       ]
@@ -3371,7 +3357,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 1014,
+          "line": 1015,
           "column": 5
         }
       ]
@@ -3424,7 +3410,7 @@
         },
         {
           "file": "src/state/appState.js",
-          "line": 1138,
+          "line": 1139,
           "column": 21
         }
       ]
@@ -3549,7 +3535,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 270,
+          "line": 288,
           "column": 56
         }
       ]
@@ -3597,7 +3583,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 215,
+          "line": 216,
           "column": 10
         }
       ]
@@ -3609,7 +3595,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 1034,
+          "line": 1035,
           "column": 16
         }
       ]
@@ -3633,7 +3619,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 253,
+          "line": 271,
           "column": 49
         }
       ]
@@ -3698,7 +3684,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 318,
+          "line": 319,
           "column": 14
         }
       ]
@@ -3710,7 +3696,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 994,
+          "line": 995,
           "column": 38
         }
       ]
@@ -3722,12 +3708,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 181,
+          "line": 178,
           "column": 50
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 186,
+          "line": 183,
           "column": 15
         }
       ]
@@ -3803,12 +3789,12 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 452,
+          "line": 453,
           "column": 14
         },
         {
           "file": "src/state/appState.js",
-          "line": 458,
+          "line": 459,
           "column": 14
         }
       ]
@@ -3864,7 +3850,7 @@
         },
         {
           "file": "src/state/appState.js",
-          "line": 1053,
+          "line": 1054,
           "column": 12
         }
       ]
@@ -3876,12 +3862,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 283,
+          "line": 301,
           "column": 64
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 321,
+          "line": 339,
           "column": 64
         }
       ]
@@ -3893,7 +3879,7 @@
       "refs": [
         {
           "file": "src/state/appState.js",
-          "line": 992,
+          "line": 993,
           "column": 40
         }
       ]

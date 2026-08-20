@@ -51,6 +51,7 @@ const UPDATE_ERROR_EVENT = "update:error";
 const MODEL_ADAPTER_TEST_UPDATED_EVENT = "model-adapter-test:updated";
 const SUPPORTED_MODEL_ADAPTER_TEST_STATUSES = new Set(["idle", "running", "success", "error"]);
 const HOME_METRICS_MIN_LOADING_MS = 600;
+export const STATS_REFRESH_MIN_LOADING_MS = HOME_METRICS_MIN_LOADING_MS;
 
 function asString(value) {
   if (typeof value === "string") {
@@ -1397,7 +1398,9 @@ function normalizeStatsBucket(source) {
   };
 }
 
-export async function syncStats(query) {
+export async function syncStats(query, options = {}) {
+  const minLoadingMS = Math.max(0, asPositiveInteger(options.minLoadingMS) || 0);
+  const startedAt = Date.now();
   appState.statsLoading = true;
   try {
     const result = await queryStats(query || {});
@@ -1414,6 +1417,10 @@ export async function syncStats(query) {
       error: appState.statsError,
     };
   } finally {
+    const elapsed = Date.now() - startedAt;
+    if (elapsed < minLoadingMS) {
+      await delay(minLoadingMS - elapsed);
+    }
     appState.statsLoading = false;
   }
 }

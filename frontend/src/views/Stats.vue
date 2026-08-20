@@ -3,7 +3,7 @@ import Button from "@/components/ui/Button.vue";
 import Card from "@/components/ui/Card.vue";
 import Input from "@/components/ui/Input.vue";
 import Select from "@/components/ui/Select.vue";
-import { appState, syncStats } from "@/state/appState";
+import { appState, STATS_REFRESH_MIN_LOADING_MS, syncStats } from "@/state/appState";
 import { formatCompactInteger, formatInteger } from "@/utils/numberFormat";
 import { computed, onMounted, ref, watch } from "vue";
 import { useRouter } from "vue-router";
@@ -148,8 +148,12 @@ function buildQuery() {
   return query;
 }
 
-async function loadStats() {
-  await syncStats(buildQuery());
+async function loadStats(options) {
+  await syncStats(buildQuery(), options);
+}
+
+function handleRefresh() {
+  void loadStats({ minLoadingMS: STATS_REFRESH_MIN_LOADING_MS });
 }
 
 function goBack() {
@@ -170,13 +174,6 @@ onMounted(async () => {
     <div class="shrink-0 px-4 pb-4">
       <div class="flex flex-wrap items-end justify-between gap-3">
         <div class="flex flex-wrap items-end gap-3">
-          <div class="flex flex-col justify-center">
-            <Button variant="default" @click="goBack">
-              <span class="icon-[mdi--arrow-left] text-[16px]"></span>
-              <span>返回</span>
-            </Button>
-          </div>
-
           <div class="flex flex-col gap-1">
             <span class="text-xs text-[#8f8f8f]">统计周期</span>
             <Select
@@ -217,12 +214,33 @@ onMounted(async () => {
               aria-label="排序方式"
             />
           </div>
+        </div>
 
+        <div class="center-row items-end gap-2">
+          <button
+            type="button"
+            class="center-row justify-center h-[24px] w-[24px] rounded-[6px] border border-[#3b3b3b] bg-[#242424] text-[#9d9d9d] transition-colors duration-150 hover:border-[#4c4c4c] hover:text-white"
+            title="返回"
+            @click="goBack"
+          >
+            <span class="icon-[mdi--arrow-left] text-[14px]"></span>
+          </button>
+          <button
+            type="button"
+            class="center-row justify-center h-[24px] w-[24px] rounded-[6px] border border-[#3b3b3b] bg-[#242424] text-[#9d9d9d] transition-colors duration-150 hover:border-[#4c4c4c] hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+            :disabled="appState.statsLoading"
+            :title="appState.statsLoading ? '刷新中' : '刷新统计'"
+            @click="handleRefresh"
+          >
+            <span
+              class="icon-[mdi--refresh] text-[14px]"
+              :class="{ '!animate-spin': appState.statsLoading }"
+            ></span>
+          </button>
           <div class="flex flex-col justify-center">
             <Button variant="default" @click="resetFilters">重置</Button>
           </div>
         </div>
-        <Button variant="default" :disabled="appState.statsLoading" @click="loadStats">刷新</Button>
       </div>
     </div>
 
