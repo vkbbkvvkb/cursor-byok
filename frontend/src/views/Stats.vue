@@ -6,6 +6,9 @@ import Select from "@/components/ui/Select.vue";
 import { appState, syncStats } from "@/state/appState";
 import { formatCompactInteger, formatInteger } from "@/utils/numberFormat";
 import { computed, onMounted, ref, watch } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const TOKEN_PRICE_PER_MILLION = {
   input: 5,
@@ -31,15 +34,17 @@ const SORT_OPTIONS = [
   { label: "按价格估算", value: "cost" },
 ];
 
-const period = ref("last7d");
+const period = ref("today");
 const customStart = ref("");
 const customEnd = ref("");
-const selectedModels = ref([]);
+const selectedModel = ref("");
 const sortBy = ref("token");
+
+const MODEL_ALL_VALUE = "";
 
 const modelOptions = computed(() => {
   const seen = new Set();
-  const options = [];
+  const options = [{ label: "全部", value: MODEL_ALL_VALUE }];
   for (const adapter of appState.modelAdapters || []) {
     const value = adapter && adapter.modelID ? String(adapter.modelID) : "";
     if (!value || seen.has(value)) {
@@ -50,6 +55,9 @@ const modelOptions = computed(() => {
       label: adapter.displayName || adapter.modelID,
       value,
     });
+  }
+  if (hasUnknownModel.value) {
+    options.push({ label: "未知/其他", value: "unknown" });
   }
   return options;
 });
@@ -114,20 +122,11 @@ const sortedByModel = computed(() => sortBuckets(appState.stats.byModel));
 const total = computed(() => appState.stats.total);
 const totalCost = computed(() => bucketCost(appState.stats.total));
 
-function toggleModel(value) {
-  const index = selectedModels.value.indexOf(value);
-  if (index >= 0) {
-    selectedModels.value = selectedModels.value.filter((item) => item !== value);
-    return;
-  }
-  selectedModels.value = [...selectedModels.value, value];
-}
-
 function resetFilters() {
-  period.value = "last7d";
+  period.value = "today";
   customStart.value = "";
   customEnd.value = "";
-  selectedModels.value = [];
+  selectedModel.value = "";
   sortBy.value = "token";
 }
 
@@ -136,7 +135,7 @@ function buildQuery() {
     period: "",
     startAt: "",
     endAt: "",
-    models: selectedModels.value.slice(),
+    models: selectedModel.value ? [selectedModel.value] : [],
   };
   if (period.value === "custom") {
     // 直接传本地日期（YYYY-MM-DD），由后端按本地时区闭区间处理，避免时区偏移。
@@ -153,7 +152,11 @@ async function loadStats() {
   await syncStats(buildQuery());
 }
 
-watch([period, customStart, customEnd, selectedModels], () => {
+function goBack() {
+  router.back();
+}
+
+watch([period, customStart, customEnd, selectedModel], () => {
   void loadStats();
 });
 
@@ -167,6 +170,13 @@ onMounted(async () => {
     <div class="shrink-0 px-4 pb-4">
       <div class="flex flex-wrap items-end justify-between gap-3">
         <div class="flex flex-wrap items-end gap-3">
+          <div class="flex flex-col justify-center">
+            <Button variant="default" @click="goBack">
+              <span class="icon-[mdi--arrow-left] text-[16px]"></span>
+              <span>返回</span>
+            </Button>
+          </div>
+
           <div class="flex flex-col gap-1">
             <span class="text-xs text-[#8f8f8f]">统计周期</span>
             <Select
@@ -189,6 +199,16 @@ onMounted(async () => {
           </div>
 
           <div class="flex flex-col gap-1">
+            <span class="text-xs text-[#8f8f8f]">模型</span>
+            <Select
+              v-model="selectedModel"
+              :options="modelOptions"
+              class="w-[160px]"
+              aria-label="模型筛选"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1">
             <span class="text-xs text-[#8f8f8f]">排序</span>
             <Select
               v-model="sortBy"
@@ -198,46 +218,11 @@ onMounted(async () => {
             />
           </div>
 
-          <Button variant="default" @click="resetFilters">重置</Button>
+          <div class="flex flex-col justify-center">
+            <Button variant="default" @click="resetFilters">重置</Button>
+          </div>
         </div>
         <Button variant="default" :disabled="appState.statsLoading" @click="loadStats">刷新</Button>
-      </div>
-
-      <div class="mt-3 flex flex-wrap items-center gap-1.5">
-        <span class="text-xs text-[#8f8f8f]">模型筛选：</span>
-        <button
-          type="button"
-          class="rounded-[999px] border px-3 py-1 text-xs transition-colors duration-150"
-          :class="selectedModels.length === 0
-            ? 'border-[#10AD5D] bg-[#10AD5D]/15 text-[#10d06f]'
-            : 'border-[#343434] bg-[#252525] text-[#a3a3a3] hover:border-[#4a4a4a] hover:text-[#e5e5e5]'"
-          @click="selectedModels = []"
-        >
-          全部
-        </button>
-        <button
-          v-for="option in modelOptions"
-          :key="option.value"
-          type="button"
-          class="rounded-[999px] border px-3 py-1 text-xs transition-colors duration-150"
-          :class="selectedModels.includes(option.value)
-            ? 'border-[#10AD5D] bg-[#10AD5D]/15 text-[#10d06f]'
-            : 'border-[#343434] bg-[#252525] text-[#a3a3a3] hover:border-[#4a4a4a] hover:text-[#e5e5e5]'"
-          @click="toggleModel(option.value)"
-        >
-          {{ option.label }}
-        </button>
-        <button
-          v-if="hasUnknownModel"
-          type="button"
-          class="rounded-[999px] border px-3 py-1 text-xs transition-colors duration-150"
-          :class="selectedModels.includes('unknown')
-            ? 'border-[#10AD5D] bg-[#10AD5D]/15 text-[#10d06f]'
-            : 'border-[#343434] bg-[#252525] text-[#a3a3a3] hover:border-[#4a4a4a] hover:text-[#e5e5e5]'"
-          @click="toggleModel('unknown')"
-        >
-          未知/其他
-        </button>
       </div>
     </div>
 

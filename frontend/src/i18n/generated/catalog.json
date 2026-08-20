@@ -7,7 +7,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 22,
+          "line": 25,
           "column": 12
         }
       ]
@@ -60,7 +60,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 300,
+          "line": 285,
           "column": 64
         }
       ]
@@ -149,7 +149,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 19,
+          "line": 22,
           "column": 12
         }
       ]
@@ -161,7 +161,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 31,
+          "line": 34,
           "column": 12
         }
       ]
@@ -185,7 +185,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 24,
+          "line": 27,
           "column": 12
         }
       ]
@@ -329,7 +329,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 197,
+          "line": 217,
           "column": 15
         }
       ]
@@ -358,12 +358,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 297,
+          "line": 282,
           "column": 64
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 335,
+          "line": 320,
           "column": 64
         }
       ]
@@ -397,7 +397,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 21,
+          "line": 24,
           "column": 12
         }
       ]
@@ -558,6 +558,18 @@
         }
       ]
     },
+    "2ea7f36f70cfb695": {
+      "source": "模型筛选",
+      "kind": "text",
+      "placeholders": 0,
+      "refs": [
+        {
+          "file": "src/views/Stats.vue",
+          "line": 207,
+          "column": 15
+        }
+      ]
+    },
     "2f9919b2fde0efe9": {
       "source": "价格估算",
       "kind": "text",
@@ -565,17 +577,17 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 276,
+          "line": 261,
           "column": 49
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 302,
+          "line": 287,
           "column": 64
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 338,
+          "line": 323,
           "column": 64
         }
       ]
@@ -920,12 +932,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 182,
+          "line": 192,
           "column": 52
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 183,
+          "line": 193,
           "column": 74
         }
       ]
@@ -966,18 +978,6 @@
         }
       ]
     },
-    "48bd090b45875a37": {
-      "source": "模型筛选：",
-      "kind": "text",
-      "placeholders": 0,
-      "refs": [
-        {
-          "file": "src/views/Stats.vue",
-          "line": 207,
-          "column": 46
-        }
-      ]
-    },
     "4923eeb7bd75cccd": {
       "source": "{0} 的模型标识不能为空",
       "kind": "template",
@@ -1009,7 +1009,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 286,
+          "line": 271,
           "column": 77
         }
       ]
@@ -1161,6 +1161,18 @@
         }
       ]
     },
+    "572cf45ba43634b3": {
+      "source": "返回",
+      "kind": "text",
+      "placeholders": 0,
+      "refs": [
+        {
+          "file": "src/views/Stats.vue",
+          "line": 176,
+          "column": 21
+        }
+      ]
+    },
     "58c6b0935a7216da": {
       "source": "打开贡献者主页失败",
       "kind": "text",
@@ -1221,8 +1233,8 @@
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 215,
-          "column": 11
+          "line": 47,
+          "column": 29
         }
       ]
     },
@@ -1291,12 +1303,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 288,
+          "line": 273,
           "column": 158
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 326,
+          "line": 311,
           "column": 160
         }
       ]
@@ -1443,7 +1455,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 25,
+          "line": 28,
           "column": 12
         }
       ]
@@ -1584,7 +1596,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 295,
+          "line": 280,
           "column": 53
         }
       ]
@@ -1661,12 +1673,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 286,
+          "line": 271,
           "column": 50
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 324,
+          "line": 309,
           "column": 50
         }
       ]
@@ -1719,7 +1731,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 324,
+          "line": 309,
           "column": 79
         }
       ]
@@ -1794,7 +1806,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 20,
+          "line": 23,
           "column": 12
         }
       ]
@@ -1907,17 +1919,17 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 262,
+          "line": 247,
           "column": 49
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 301,
+          "line": 286,
           "column": 64
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 337,
+          "line": 322,
           "column": 64
         }
       ]
@@ -1970,12 +1982,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 186,
+          "line": 196,
           "column": 52
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 187,
+          "line": 197,
           "column": 72
         }
       ]
@@ -2491,7 +2503,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 192,
+          "line": 212,
           "column": 50
         }
       ]
@@ -2547,17 +2559,17 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 256,
+          "line": 241,
           "column": 49
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 296,
+          "line": 281,
           "column": 64
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 334,
+          "line": 319,
           "column": 64
         }
       ]
@@ -2593,7 +2605,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 245,
+          "line": 230,
           "column": 127
         }
       ]
@@ -2605,7 +2617,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 299,
+          "line": 284,
           "column": 64
         }
       ]
@@ -2653,7 +2665,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 203,
+          "line": 225,
           "column": 88
         }
       ]
@@ -2665,7 +2677,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 323,
+          "line": 308,
           "column": 56
         }
       ]
@@ -3036,7 +3048,12 @@
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 333,
+          "line": 202,
+          "column": 50
+        },
+        {
+          "file": "src/views/Stats.vue",
+          "line": 318,
           "column": 53
         }
       ]
@@ -3084,8 +3101,8 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 201,
-          "column": 59
+          "line": 222,
+          "column": 61
         }
       ]
     },
@@ -3243,7 +3260,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 18,
+          "line": 21,
           "column": 12
         }
       ]
@@ -3532,7 +3549,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 285,
+          "line": 270,
           "column": 56
         }
       ]
@@ -3568,7 +3585,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 30,
+          "line": 33,
           "column": 12
         }
       ]
@@ -3616,7 +3633,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 268,
+          "line": 253,
           "column": 49
         }
       ]
@@ -3705,12 +3722,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 171,
+          "line": 181,
           "column": 50
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 176,
+          "line": 186,
           "column": 15
         }
       ]
@@ -3815,7 +3832,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 23,
+          "line": 26,
           "column": 12
         }
       ]
@@ -3859,12 +3876,12 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 298,
+          "line": 283,
           "column": 64
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 336,
+          "line": 321,
           "column": 64
         }
       ]
@@ -3888,13 +3905,13 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 95,
-          "column": 12
+          "line": 60,
+          "column": 27
         },
         {
           "file": "src/views/Stats.vue",
-          "line": 238,
-          "column": 11
+          "line": 103,
+          "column": 12
         }
       ]
     },
@@ -3905,7 +3922,7 @@
       "refs": [
         {
           "file": "src/views/Stats.vue",
-          "line": 26,
+          "line": 29,
           "column": 12
         }
       ]
