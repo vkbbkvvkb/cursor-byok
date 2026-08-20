@@ -48,3 +48,19 @@ func (service *MetricsService) GetHomeMetricsSummary() (HomeMetricsSummary, erro
 		CacheHitRate:       summary.CacheHitRate,
 	}, nil
 }
+
+// StatsQuery 定义统计详情的查询参数。
+type StatsQuery struct {
+	Period  string   `json:"period"`
+	StartAt string   `json:"startAt"`
+	EndAt   string   `json:"endAt"`
+	Models  []string `json:"models"`
+}
+
+// QueryStats 按时间段/模型聚合统计明细。
+func (service *MetricsService) QueryStats(query StatsQuery) (historymetrics.StatsResult, error) {
+	if err := appdata.EnsureAssistantHome(); err != nil {
+		return historymetrics.StatsResult{}, err
+	}
+	return historymetrics.QueryStats(appdata.UsageFilePath(), query.Period, query.StartAt, query.EndAt, query.Models)
+}

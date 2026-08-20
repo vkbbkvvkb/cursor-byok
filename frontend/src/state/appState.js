@@ -6,6 +6,7 @@ import {
   exportUserConfig as exportUserConfigFile,
   getAppVersion,
   getHomeMetricsSummary,
+  queryStats,
   getModelAdapterTestResults,
   installReadyUpdate,
   getProxyState,
@@ -851,6 +852,10 @@ export const appState = reactive({
   homeMetricsLoading: false,
   homeMetricsError: "",
 
+  stats: createEmptyStatsResult(),
+  statsLoading: false,
+  statsError: "",
+
   updateState: "idle",
   updateVersion: "",
   updateReleaseDate: "",
@@ -1343,6 +1348,73 @@ export async function syncHomeMetrics() {
       await delay(HOME_METRICS_MIN_LOADING_MS - elapsed);
     }
     appState.homeMetricsLoading = false;
+  }
+}
+
+function createEmptyStatsBucket() {
+  return {
+    key: "",
+    label: "",
+    providerCalls: 0,
+    inputTokens: 0,
+    outputTokens: 0,
+    cacheReadTokens: 0,
+    cacheWriteTokens: 0,
+    totalTokens: 0,
+  };
+}
+
+function createEmptyStatsResult() {
+  return {
+    byDay: [],
+    byModel: [],
+    total: createEmptyStatsBucket(),
+  };
+}
+
+function normalizeStatsResult(source) {
+  const raw = source && typeof source === "object" ? source : {};
+  const byDay = asArray(raw.byDay).map(normalizeStatsBucket);
+  const byModel = asArray(raw.byModel).map(normalizeStatsBucket);
+  return {
+    byDay,
+    byModel,
+    total: normalizeStatsBucket(raw.total),
+  };
+}
+
+function normalizeStatsBucket(source) {
+  const raw = source && typeof source === "object" ? source : {};
+  return {
+    key: asString(raw.key),
+    label: asString(raw.label),
+    providerCalls: asPositiveInteger(raw.providerCalls),
+    inputTokens: asPositiveInteger(raw.inputTokens),
+    outputTokens: asPositiveInteger(raw.outputTokens),
+    cacheReadTokens: asPositiveInteger(raw.cacheReadTokens),
+    cacheWriteTokens: asPositiveInteger(raw.cacheWriteTokens),
+    totalTokens: asPositiveInteger(raw.totalTokens),
+  };
+}
+
+export async function syncStats(query) {
+  appState.statsLoading = true;
+  try {
+    const result = await queryStats(query || {});
+    appState.stats = normalizeStatsResult(result);
+    appState.statsError = "";
+    return {
+      ok: true,
+      error: "",
+    };
+  } catch (error) {
+    appState.statsError = toUserError(error);
+    return {
+      ok: false,
+      error: appState.statsError,
+    };
+  } finally {
+    appState.statsLoading = false;
   }
 }
 

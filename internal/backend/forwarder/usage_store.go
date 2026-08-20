@@ -12,7 +12,7 @@ import (
 
 const (
 	usageFileName          = "usage.json"
-	usageFileSchemaVersion = 2
+	usageFileSchemaVersion = 3
 	usageRecentEventLimit  = 500
 
 	usageEventKindProvider = "provider_call"
@@ -29,6 +29,7 @@ type usageFileDocument struct {
 	UpdatedAt     time.Time                 `json:"updated_at"`
 	Totals        usageFileTotals           `json:"totals"`
 	Daily         []usageFileDaily          `json:"daily"`
+	DailyByModel  []usageFileDailyModel     `json:"daily_by_model,omitempty"`
 	RecentEvents  []usageFileEvent          `json:"recent_events"`
 	EventIndex    map[string]usageFileEvent `json:"event_index,omitempty"`
 }
@@ -58,11 +59,24 @@ type usageFileDaily struct {
 	TotalTokens       int64  `json:"total_tokens"`
 }
 
+// usageFileDailyModel 按天+模型聚合 provider 用量，供按模型维度的统计。
+type usageFileDailyModel struct {
+	Date             string `json:"date"`
+	Model            string `json:"model"`
+	ProviderCalls    int64  `json:"provider_calls"`
+	InputTokens      int64  `json:"input_tokens"`
+	OutputTokens     int64  `json:"output_tokens"`
+	CacheReadTokens  int64  `json:"cache_read_tokens"`
+	CacheWriteTokens int64  `json:"cache_write_tokens"`
+	TotalTokens      int64  `json:"total_tokens"`
+}
+
 type usageFileEvent struct {
 	EventID          string    `json:"event_id"`
 	Kind             string    `json:"kind,omitempty"`
 	Status           string    `json:"status,omitempty"`
 	At               time.Time `json:"at"`
+	Model            string    `json:"model,omitempty"`
 	InputTokens      int64     `json:"input_tokens"`
 	OutputTokens     int64     `json:"output_tokens"`
 	CacheReadTokens  int64     `json:"cache_read_tokens"`
@@ -76,6 +90,7 @@ type usageFileDelta struct {
 	turnsTotal        int64
 	validTurnsTotal   int64
 	invalidTurnsTotal int64
+	model             string
 	inputTokens       int64
 	outputTokens      int64
 	cacheReadTokens   int64
@@ -97,6 +112,7 @@ func (store *UsageFileStore) UpsertEvent(event usageFileEvent) error {
 	}
 	event.Kind = normalizeUsageEventKind(event.Kind)
 	event.Status = strings.TrimSpace(event.Status)
+	event.Model = strings.TrimSpace(event.Model)
 	if event.At.IsZero() {
 		event.At = time.Now().UTC()
 	} else {
@@ -192,6 +208,7 @@ func readUsageFileDocument(path string) (usageFileDocument, error) {
 			return usageFileDocument{
 				SchemaVersion: usageFileSchemaVersion,
 				Daily:         make([]usageFileDaily, 0),
+				DailyByModel:  make([]usageFileDailyModel, 0),
 				RecentEvents:  make([]usageFileEvent, 0),
 				EventIndex:    make(map[string]usageFileEvent),
 			}, nil
@@ -270,6 +287,7 @@ func usageFileEventDelta(event usageFileEvent) usageFileDelta {
 	default:
 		return usageFileDelta{
 			providerCalls:    1,
+			model:            strings.TrimSpace(event.Model),
 			inputTokens:      nonNegativeInt64(event.InputTokens),
 			outputTokens:     nonNegativeInt64(event.OutputTokens),
 			cacheReadTokens:  nonNegativeInt64(event.CacheReadTokens),
@@ -285,6 +303,7 @@ func negateUsageFileDelta(value usageFileDelta) usageFileDelta {
 		turnsTotal:        -value.turnsTotal,
 		validTurnsTotal:   -value.validTurnsTotal,
 		invalidTurnsTotal: -value.invalidTurnsTotal,
+		model:             value.model,
 		inputTokens:       -value.inputTokens,
 		outputTokens:      -value.outputTokens,
 		cacheReadTokens:   -value.cacheReadTokens,
@@ -308,19 +327,35 @@ func applyUsageFileDelta(doc *usageFileDocument, at time.Time, delta usageFileDe
 	doc.Totals.TotalTokens = clampNonNegativeInt64(doc.Totals.TotalTokens + delta.totalTokens)
 
 	date := at.UTC().Format("2006-01-02")
-	for index := range doc.Daily {
-		if doc.Daily[index].Date != date {
-			continue
-		}
-		applyUsageDailyDelta(&doc.Daily[index], delta)
+	if !applyUsageDailyDelta(doc.Daily, date, delta) {
+		item := usageFileDaily{Date: date}
+		applyUsageDailyItemDelta(&item, delta)
+		doc.Daily = append(doc.Daily, item)
+	}
+
+	// 只有 provider_call 才参与按模型聚合，turn_finalized 只计数轮次。
+	if delta.providerCalls == 0 {
 		return
 	}
-	item := usageFileDaily{Date: date}
-	applyUsageDailyDelta(&item, delta)
-	doc.Daily = append(doc.Daily, item)
+	if !applyUsageDailyModelDelta(doc.DailyByModel, date, delta) {
+		modelItem := usageFileDailyModel{Date: date, Model: delta.model}
+		applyUsageDailyModelItemDelta(&modelItem, delta)
+		doc.DailyByModel = append(doc.DailyByModel, modelItem)
+	}
 }
 
-func applyUsageDailyDelta(item *usageFileDaily, delta usageFileDelta) {
+func applyUsageDailyDelta(items []usageFileDaily, date string, delta usageFileDelta) bool {
+	for index := range items {
+		if items[index].Date != date {
+			continue
+		}
+		applyUsageDailyItemDelta(&items[index], delta)
+		return true
+	}
+	return false
+}
+
+func applyUsageDailyItemDelta(item *usageFileDaily, delta usageFileDelta) {
 	if item == nil {
 		return
 	}
@@ -328,6 +363,29 @@ func applyUsageDailyDelta(item *usageFileDaily, delta usageFileDelta) {
 	item.TurnsTotal = clampNonNegativeInt64(item.TurnsTotal + delta.turnsTotal)
 	item.ValidTurnsTotal = clampNonNegativeInt64(item.ValidTurnsTotal + delta.validTurnsTotal)
 	item.InvalidTurnsTotal = clampNonNegativeInt64(item.InvalidTurnsTotal + delta.invalidTurnsTotal)
+	item.InputTokens = clampNonNegativeInt64(item.InputTokens + delta.inputTokens)
+	item.OutputTokens = clampNonNegativeInt64(item.OutputTokens + delta.outputTokens)
+	item.CacheReadTokens = clampNonNegativeInt64(item.CacheReadTokens + delta.cacheReadTokens)
+	item.CacheWriteTokens = clampNonNegativeInt64(item.CacheWriteTokens + delta.cacheWriteTokens)
+	item.TotalTokens = clampNonNegativeInt64(item.TotalTokens + delta.totalTokens)
+}
+
+func applyUsageDailyModelDelta(items []usageFileDailyModel, date string, delta usageFileDelta) bool {
+	for index := range items {
+		if items[index].Date != date || items[index].Model != delta.model {
+			continue
+		}
+		applyUsageDailyModelItemDelta(&items[index], delta)
+		return true
+	}
+	return false
+}
+
+func applyUsageDailyModelItemDelta(item *usageFileDailyModel, delta usageFileDelta) {
+	if item == nil {
+		return
+	}
+	item.ProviderCalls = clampNonNegativeInt64(item.ProviderCalls + delta.providerCalls)
 	item.InputTokens = clampNonNegativeInt64(item.InputTokens + delta.inputTokens)
 	item.OutputTokens = clampNonNegativeInt64(item.OutputTokens + delta.outputTokens)
 	item.CacheReadTokens = clampNonNegativeInt64(item.CacheReadTokens + delta.cacheReadTokens)

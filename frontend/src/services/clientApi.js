@@ -8,7 +8,7 @@ import {
   StartProxy,
   StopProxy,
 } from "@bindings/cursor/internal/bridge/proxyservice.js";
-import { GetHomeMetricsSummary } from "@bindings/cursor/internal/bridge/metricsservice.js";
+import { GetHomeMetricsSummary, QueryStats } from "@bindings/cursor/internal/bridge/metricsservice.js";
 import {
   CheckForUpdates,
   GetAppVersion,
@@ -99,6 +99,10 @@ export function getProxyState() {
 
 export function getHomeMetricsSummary() {
   return withApiLogging("GetHomeMetricsSummary", undefined, () => GetHomeMetricsSummary());
+}
+
+export function queryStats(payload) {
+  return withApiLogging("QueryStats", payload, () => QueryStats(payload));
 }
 
 export function startProxyService() {

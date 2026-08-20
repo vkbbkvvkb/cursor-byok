@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"time"
 )
 
 type usageFileDocument struct {
@@ -19,6 +20,29 @@ type usageFileDocument struct {
 		CacheWriteTokens  int64 `json:"cache_write_tokens"`
 		TotalTokens       int64 `json:"total_tokens"`
 	} `json:"totals"`
+
+	// DailyByModel 按天+模型维度的 provider 用量聚合（schema v3+）。
+	DailyByModel []struct {
+		Date             string `json:"date"`
+		Model            string `json:"model"`
+		ProviderCalls    int64  `json:"provider_calls"`
+		InputTokens      int64  `json:"input_tokens"`
+		OutputTokens     int64  `json:"output_tokens"`
+		CacheReadTokens  int64  `json:"cache_read_tokens"`
+		CacheWriteTokens int64  `json:"cache_write_tokens"`
+		TotalTokens      int64  `json:"total_tokens"`
+	} `json:"daily_by_model"`
+
+	// RecentEvents 提供带时间戳的事件明细（有限条数，用于小时级近似）。
+	RecentEvents []struct {
+		At               time.Time `json:"at"`
+		Model            string    `json:"model"`
+		InputTokens      int64     `json:"input_tokens"`
+		OutputTokens     int64     `json:"output_tokens"`
+		CacheReadTokens  int64     `json:"cache_read_tokens"`
+		CacheWriteTokens int64     `json:"cache_write_tokens"`
+		TotalTokens      int64     `json:"total_tokens"`
+	} `json:"recent_events"`
 }
 
 func LoadUsageSummary(path string) (Summary, error) {
